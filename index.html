@@ -54,6 +54,9 @@ section{position:relative;z-index:1;padding:100px 24px}
 .section-title{font-family:'Orbitron',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:900;letter-spacing:.08em;color:#fff;margin-bottom:20px}
 .section-desc{font-size:17px;line-height:1.85;color:var(--text);max-width:720px}
 
+/* Circular stack diagram */
+.web-circle-wrap{width:100%;max-width:560px;margin:8px auto 40px;display:block}
+
 /* Full layer stack */
 .layer-stack{display:flex;flex-direction:column;gap:6px;margin-top:48px}
 .layer-row{display:flex;align-items:center;gap:16px;padding:14px 22px;border:1px solid rgba(255,255,255,.05);border-radius:6px;background:rgba(255,255,255,.015);transition:all .25s}
@@ -98,8 +101,8 @@ section{position:relative;z-index:1;padding:100px 24px}
 .circle-equation span{color:var(--luminal-mid)}
 .circle-desc{font-size:16px;line-height:1.8;color:var(--text);max-width:600px;text-align:center}
 
-footer{position:relative;z-index:1;border-top:1px solid rgba(221,212,255,.07);padding:52px 40px 40px}
-.foot-inner{max-width:1400px;margin:0 auto}
+footer{position:relative;z-index:1;border-top:1px solid rgba(221,212,255,.07);padding:52px 24px 40px}
+.foot-inner{max-width:1100px;margin:0 auto}
 .foot-brand-row{text-align:center;margin-bottom:3.5rem}
 .foot-brand-name{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;letter-spacing:.2em;color:var(--luminal);margin-bottom:8px}
 .foot-sub{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.22em;color:#a8bfd8}
@@ -107,11 +110,11 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(221,212,255,.07);pa
 .foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--luminal);margin-bottom:1rem;text-transform:uppercase}
 .foot-col ul{list-style:none;padding:0;margin:0}
 .foot-col ul li{margin-bottom:.25rem}
-.foot-col ul li a{color:#a8bfd8;text-decoration:none;font-size:.9rem;transition:color .2s}
-footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,1)) drop-shadow(0 0 20px rgba(221,212,255,.8)) drop-shadow(0 0 40px rgba(221,212,255,.4))}
+.foot-col ul li a{color:#a8bfd8;text-decoration:none;font-size:.9rem;transition:filter .3s ease,color .3s ease}
+footer a:hover,.foot-col ul li a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,1)) drop-shadow(0 0 20px rgba(221,212,255,.8)) drop-shadow(0 0 40px rgba(221,212,255,.4))}
 .foot-bottom{border-top:1px solid rgba(221,212,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .foot-bottom p{color:#a8bfd8;font-size:.82rem}
-.foot-bottom a{color:#a8bfd8;text-decoration:none}
+.foot-bottom a{color:#a8bfd8;text-decoration:none;transition:filter .3s ease,color .3s ease}
 @media(max-width:900px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:500px){.foot-grid{grid-template-columns:1fr}}
 
@@ -149,7 +152,7 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
     <a href="https://oasisomniverse.one" class="btn-secondary" target="_blank" rel="noopener">BACK TO HUB</a>
   </div>
   <div class="hero-anim">
-    <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;height:auto;margin:0 auto;display:block">
+    <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;height:auto;margin:0 auto;display:block">
       <defs>
         <radialGradient id="srcGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#ce93d8" stop-opacity=".3"/>
@@ -169,24 +172,26 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
       <!-- Soft radial halo -->
       <circle cx="280" cy="280" r="240" fill="url(#srcGlow)"/>
 
-      <!-- 7 concentric rings — very slow gentle breathing -->
-      <circle cx="280" cy="280" r="230" stroke="#ce93d8" stroke-width=".4" fill="none" opacity=".06">
-        <animate attributeName="opacity" values=".06;.02;.06" dur="9s" repeatCount="indefinite"/>
+      <!-- Radar pulses — signals travelling outward into the void -->
+      <circle cx="280" cy="280" r="18" stroke="#ce93d8" stroke-width="1.8" fill="none" opacity="0">
+        <animate attributeName="r" values="18;240" dur="4.8s" repeatCount="indefinite" begin="0s" calcMode="spline" keySplines="0.1 0.4 0.3 1"/>
+        <animate attributeName="opacity" values=".85;0" dur="4.8s" repeatCount="indefinite" begin="0s"/>
+        <animate attributeName="stroke-width" values="1.8;.3" dur="4.8s" repeatCount="indefinite" begin="0s"/>
       </circle>
-      <circle cx="280" cy="280" r="190" stroke="#ce93d8" stroke-width=".5" fill="none" opacity=".1">
-        <animate attributeName="opacity" values=".10;.04;.10" dur="8s" repeatCount="indefinite"/>
+      <circle cx="280" cy="280" r="18" stroke="#ce93d8" stroke-width="1.8" fill="none" opacity="0">
+        <animate attributeName="r" values="18;240" dur="4.8s" repeatCount="indefinite" begin="1.2s" calcMode="spline" keySplines="0.1 0.4 0.3 1"/>
+        <animate attributeName="opacity" values=".85;0" dur="4.8s" repeatCount="indefinite" begin="1.2s"/>
+        <animate attributeName="stroke-width" values="1.8;.3" dur="4.8s" repeatCount="indefinite" begin="1.2s"/>
       </circle>
-      <circle cx="280" cy="280" r="150" stroke="#ce93d8" stroke-width=".7" fill="none" opacity=".16">
-        <animate attributeName="opacity" values=".16;.06;.16" dur="7s" repeatCount="indefinite"/>
+      <circle cx="280" cy="280" r="18" stroke="#ce93d8" stroke-width="1.8" fill="none" opacity="0">
+        <animate attributeName="r" values="18;240" dur="4.8s" repeatCount="indefinite" begin="2.4s" calcMode="spline" keySplines="0.1 0.4 0.3 1"/>
+        <animate attributeName="opacity" values=".85;0" dur="4.8s" repeatCount="indefinite" begin="2.4s"/>
+        <animate attributeName="stroke-width" values="1.8;.3" dur="4.8s" repeatCount="indefinite" begin="2.4s"/>
       </circle>
-      <circle cx="280" cy="280" r="112" stroke="#ce93d8" stroke-width=".9" fill="none" opacity=".24">
-        <animate attributeName="opacity" values=".24;.09;.24" dur="6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="280" cy="280" r="76" stroke="#ce93d8" stroke-width="1.2" fill="none" opacity=".36">
-        <animate attributeName="opacity" values=".36;.14;.36" dur="5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="280" cy="280" r="44" stroke="#ce93d8" stroke-width="1.6" fill="none" opacity=".55">
-        <animate attributeName="opacity" values=".55;.22;.55" dur="4s" repeatCount="indefinite"/>
+      <circle cx="280" cy="280" r="18" stroke="#ce93d8" stroke-width="1.8" fill="none" opacity="0">
+        <animate attributeName="r" values="18;240" dur="4.8s" repeatCount="indefinite" begin="3.6s" calcMode="spline" keySplines="0.1 0.4 0.3 1"/>
+        <animate attributeName="opacity" values=".85;0" dur="4.8s" repeatCount="indefinite" begin="3.6s"/>
+        <animate attributeName="stroke-width" values="1.8;.3" dur="4.8s" repeatCount="indefinite" begin="3.6s"/>
       </circle>
       <circle cx="280" cy="280" r="18" stroke="#ce93d8" stroke-width="2" fill="rgba(255,255,255,.1)" opacity=".8">
         <animate attributeName="opacity" values=".8;.4;.8" dur="3.5s" repeatCount="indefinite"/>
@@ -207,6 +212,106 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
     <div class="section-badge reveal">WEB10 · THE FULL STACK</div>
     <h2 class="section-title reveal">The Circle<br/>Is Complete</h2>
     <p class="section-desc reveal">WEB10 is not the end of the stack. It is the recognition that the stack was always a circle. Every web is an emanation of THE SOURCE — and every web, when followed far enough, returns to it.</p>
+
+    <!-- Circular animated diagram: WEB1 → WEB10, closing back to THE SOURCE -->
+    <svg class="web-circle-wrap reveal" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <filter id="wc-gp"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="wc-gs"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <style>
+          .wc-ring{stroke-dasharray:4 6;animation:wc-rot 90s linear infinite}
+          @keyframes wc-rot{to{stroke-dashoffset:-400}}
+        </style>
+      </defs>
+
+      <!-- Outer ring (the closed loop) -->
+      <path class="wc-ring" d="M530,320 A210,210 0 1,1 110,320 A210,210 0 1,1 530,320" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+
+      <!-- Spokes -->
+      <g stroke="rgba(255,255,255,.12)" stroke-width=".8">
+        <line x1="320" y1="320" x2="320" y2="110"/>
+        <line x1="320" y1="320" x2="443" y2="150"/>
+        <line x1="320" y1="320" x2="520" y2="255"/>
+        <line x1="320" y1="320" x2="520" y2="385"/>
+        <line x1="320" y1="320" x2="443" y2="490"/>
+        <line x1="320" y1="320" x2="320" y2="530"/>
+        <line x1="320" y1="320" x2="197" y2="490"/>
+        <line x1="320" y1="320" x2="120" y2="385"/>
+        <line x1="320" y1="320" x2="120" y2="255"/>
+        <line x1="320" y1="320" x2="197" y2="150"/>
+      </g>
+
+      <!-- Centre: THE SOURCE / WEB0 -->
+      <circle cx="320" cy="320" r="0" stroke="#ffffff" stroke-width=".9" fill="none" filter="url(#wc-gp)">
+        <animate attributeName="r" values="34;42;34" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".5;.2;.5" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="320" cy="320" r="26" stroke="#ffffff" stroke-width="1.4" fill="rgba(255,255,255,.08)"/>
+      <circle cx="320" cy="320" r="7"  fill="#ffffff" opacity=".95" filter="url(#wc-gp)"/>
+      <text x="320" y="349" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="8" font-weight="700" letter-spacing="2" fill="#fff" opacity=".9">SOURCE</text>
+
+      <!-- WEB1 -->
+      <circle cx="320" cy="110" r="30" fill="rgba(74,90,138,.18)" stroke="#4a5a8a" stroke-width="1.2"/>
+      <text x="320" y="106" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#8a9ac0">WEB1</text>
+      <text x="320" y="118" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#8a9ac0" opacity=".7">INFRASTRUCTURE</text>
+
+      <!-- WEB2 -->
+      <circle cx="443" cy="150" r="30" fill="rgba(90,106,154,.18)" stroke="#5a6a9a" stroke-width="1.2"/>
+      <text x="443" y="146" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#9aaad0">WEB2</text>
+      <text x="443" y="158" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#9aaad0" opacity=".7">SOCIAL</text>
+
+      <!-- WEB3 -->
+      <circle cx="520" cy="255" r="30" fill="rgba(106,122,170,.18)" stroke="#6a7aaa" stroke-width="1.2"/>
+      <text x="520" y="251" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#aabae0">WEB3</text>
+      <text x="520" y="263" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#aabae0" opacity=".7">BLOCKCHAIN</text>
+
+      <!-- WEB4 -->
+      <circle cx="520" cy="385" r="30" fill="rgba(0,229,255,.1)" stroke="#00e5ff" stroke-width="1.2"/>
+      <text x="520" y="381" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#00e5ff">WEB4</text>
+      <text x="520" y="393" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#00e5ff" opacity=".7">IDENTITY</text>
+
+      <!-- WEB5 -->
+      <circle cx="443" cy="490" r="30" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.2"/>
+      <text x="443" y="486" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#a78bfa">WEB5</text>
+      <text x="443" y="498" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#a78bfa" opacity=".7">OMNIVERSE</text>
+
+      <!-- WEB6 -->
+      <circle cx="320" cy="530" r="30" fill="rgba(253,216,53,.12)" stroke="#fdd835" stroke-width="1.2"/>
+      <text x="320" y="526" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#fdd835">WEB6</text>
+      <text x="320" y="538" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#fdd835" opacity=".7">AI LAYER</text>
+
+      <!-- WEB7 -->
+      <circle cx="197" cy="490" r="30" fill="rgba(255,95,160,.12)" stroke="#ff5fa0" stroke-width="1.2"/>
+      <text x="197" y="486" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#ff5fa0">WEB7</text>
+      <text x="197" y="498" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#ff5fa0" opacity=".7">SYMBIOSIS</text>
+
+      <!-- WEB8 -->
+      <circle cx="120" cy="385" r="30" fill="rgba(0,200,83,.12)" stroke="#00c853" stroke-width="1.2"/>
+      <text x="120" y="381" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#00c853">WEB8</text>
+      <text x="120" y="393" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#00c853" opacity=".7">GALACTIC</text>
+
+      <!-- WEB9 -->
+      <circle cx="120" cy="255" r="30" fill="rgba(124,77,255,.14)" stroke="#7c4dff" stroke-width="1.2"/>
+      <text x="120" y="251" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#9b7cff">WEB9</text>
+      <text x="120" y="263" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#9b7cff" opacity=".7">DISSOLUTION</text>
+
+      <!-- WEB10 -->
+      <circle cx="197" cy="150" r="30" fill="rgba(255,255,255,.1)" stroke="#ffffff" stroke-width="1.2"/>
+      <text x="197" y="146" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" font-weight="700" letter-spacing="1" fill="#ffffff">WEB10</text>
+      <text x="197" y="158" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6" letter-spacing=".5" fill="#ffffff" opacity=".8">SOURCE</text>
+
+      <!-- Travelling pulse — endlessly circling the loop, no beginning, no end -->
+      <circle r="4" fill="#ffffff" filter="url(#wc-gs)">
+        <animateMotion dur="10s" repeatCount="indefinite" begin="0s"><mpath href="#wc-ring-path"/></animateMotion>
+      </circle>
+      <circle r="3" fill="#a78bfa" filter="url(#wc-gs)" opacity=".8">
+        <animateMotion dur="10s" repeatCount="indefinite" begin="3.3s"><mpath href="#wc-ring-path"/></animateMotion>
+      </circle>
+      <circle r="3" fill="#00e5ff" filter="url(#wc-gs)" opacity=".8">
+        <animateMotion dur="10s" repeatCount="indefinite" begin="6.6s"><mpath href="#wc-ring-path"/></animateMotion>
+      </circle>
+      <path id="wc-ring-path" d="M320,110 A210,210 0 1,1 320,530 A210,210 0 1,1 320,110" fill="none"/>
+    </svg>
 
     <div class="layer-stack">
       <div class="layer-row active reveal"><span class="layer-num">WEB10</span><span class="layer-name">THE SOURCE</span><span class="layer-tag">YOU ARE HERE · AND EVERYWHERE</span></div>
@@ -295,6 +400,8 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
       <div class="name-card reveal"><div class="name-tradition">BUDDHISM</div><div class="name-label">SUNYATA</div></div>
       <div class="name-card reveal"><div class="name-tradition">HERMETICISM</div><div class="name-label">THE ALL</div></div>
       <div class="name-card reveal"><div class="name-tradition">PHYSICS</div><div class="name-label">THE FIELD</div></div>
+      <div class="name-card reveal"><div class="name-tradition">SUFISM</div><div class="name-label">AL-HAQQ</div></div>
+      <div class="name-card reveal"><div class="name-tradition">NEOPLATONISM</div><div class="name-label">THE ONE</div></div>
       <div class="name-card reveal"><div class="name-tradition">OASIS</div><div class="name-label">THE SOURCE</div></div>
     </div>
   </div>
@@ -405,6 +512,12 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/tree/master/Docs/Devs/API%20Documentation" target="_blank" rel="noopener">API Reference</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPER_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Developer Index</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS_Quick_Start_Guide.md" target="_blank" rel="noopener">Quick Start Guide</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS_ARCHITECTURE_OVERVIEW.md" target="_blank" rel="noopener">Architecture Overview</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPMENT_ENVIRONMENT_SETUP.md" target="_blank" rel="noopener">Environment Setup</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS-BEST-PRACTICES.md" target="_blank" rel="noopener">Best Practices</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DOCKER_DEPLOYMENT_GUIDE.md" target="_blank" rel="noopener">Docker Deployment Guide</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/OASIS-Runtime-v4.5.1" target="_blank" rel="noopener">OASIS Runtime v4.5.1</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -419,6 +532,12 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
           <li><a href="https://www.oasisweb4.com/holonic-architecture" target="_blank" rel="noopener">Holonic Architecture</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/WIKI_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Wiki</a></li>
           <li><a href="https://www.ourworldthegame.com/blog" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_Lite_Paper.md" target="_blank" rel="noopener">OASIS Lite Paper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_HYPERDRIVE_WHITEPAPER.md" target="_blank" rel="noopener">HyperDrive Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_COSMIC_ORM_WHITEPAPER.md" target="_blank" rel="noopener">Cosmic ORM Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_NFT_SYSTEM_WHITEPAPER.md" target="_blank" rel="noopener">NFT System Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_UNIVERSAL_WALLET_WHITEPAPER.md" target="_blank" rel="noopener">Universal Wallet Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OASIS_TECHNOLOGY_SUMMARY_AND_USE_CASES.md" target="_blank" rel="noopener">Use Cases</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -435,9 +554,9 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
         <ul>
           <li><a href="https://discord.gg/q9gMKU6" target="_blank" rel="noopener">Discord</a></li>
           <li><a href="https://t.me/oasisweb4chat" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">𝕏 OASIS WEB4</a></li>
-          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">𝕏 Our World</a></li>
-          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">𝕏 HoloNET</a></li>
+          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">X OASIS WEB4</a></li>
+          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">X Our World</a></li>
+          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">X HoloNET</a></li>
           <li><a href="https://www.youtube.com/@WEB4OASIS" target="_blank" rel="noopener">YouTube OASIS</a></li>
           <li><a href="https://www.youtube.com/@ourworld-the-game" target="_blank" rel="noopener">YouTube Our World</a></li>
           <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
@@ -450,6 +569,8 @@ footer a:hover{color:var(--luminal);filter:drop-shadow(0 0 8px rgba(221,212,255,
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/issues" target="_blank" rel="noopener">Report an Issue</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/discussions" target="_blank" rel="noopener">Discussions</a></li>
           <li><a href="https://tally.so/r/WOZjNa" target="_blank" rel="noopener">Submit a Support Ticket</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">Code of Conduct</a></li>
         </ul>
       </div>
     </div>
