@@ -404,7 +404,7 @@ footer a:hover,.foot-col ul li a:hover{color:var(--luminal);filter:drop-shadow(0
 
 <hr class="divider"/>
 
-<section>
+<section id="silence">
   <div class="section-inner">
     <div class="section-badge reveal">WEB10 · WHAT CANNOT BE SAID</div>
     <h2 class="section-title reveal">Before the First<br/>Web Was Woven</h2>
@@ -646,6 +646,32 @@ const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')});
 },{threshold:.08});
 document.querySelectorAll('.reveal,.quality-card').forEach(el=>observer.observe(el));
+
+function toggleMenu(){
+  const nav=document.querySelector('.nav-links');
+  const open=nav.style.display==='flex';
+  if(open){
+    nav.style.display='none';
+  }else{
+    nav.style.display='flex';
+    nav.style.position='absolute';
+    nav.style.top='100%';
+    nav.style.left='0';
+    nav.style.right='0';
+    nav.style.flexDirection='column';
+    nav.style.gap='0';
+    nav.style.background='rgba(3,7,20,.97)';
+    nav.style.borderBottom='1px solid rgba(255,255,255,.15)';
+    nav.style.padding='8px 0';
+  }
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const nav=document.querySelector('.nav-links');
+    if(window.innerWidth<=900){nav.style.display='none'}
+  });
+  a.style.padding='14px 24px';
+});
 </script>
 </body>
 </html>
